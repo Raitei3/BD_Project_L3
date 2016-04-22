@@ -12,5 +12,5 @@ CREATE TABLE `Maire_flat`(
   `civilite` char(1) NOT NULL,
   `date_de_naissance` date NOT NULL,
   `code_professionnel` SMALLINT NOT NULL,
-  `profession` varchar(120)
+  `profession` varchar(120) NOT NULL
 )ENGINE=InnoDB;

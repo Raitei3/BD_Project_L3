@@ -1,10 +1,10 @@
 
 
-DROP DATABASE IF EXISTS `Maire_flat`;
+#DROP DATABASE IF EXISTS `Maire_flat`;
 CREATE DATABASE `Maire_flat`;
 
 USE `Maire_flat`;
-
+DROP TABLE IF EXISTS `Maire`
 CREATE TABLE `Maire`(
   `code_insee` MEDIUMINT(6) UNSIGNED NOT NULL,
   `departement`varchar(50) NOT NULL,
@@ -15,5 +15,5 @@ CREATE TABLE `Maire`(
   `civilite` char(1) NOT NULL,
   `date_de_naissance` date NOT NULL,
   `code_professionnel` SMALLINT NOT NULL,
-  `profession` varchar(120)
+  `profession` varchar(120) NOT NULL
 )ENGINE=InnoDB;
