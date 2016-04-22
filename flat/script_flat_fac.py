@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-
 import csv
 import MySQLdb
 
 # Connexion à la BD
 
 db = MySQLdb.connect(host="dbserver", user="antborde", passwd="poneysql", db="antborde")
+
 #pour le cremi
 #db = MySQLdb.connect(host="dbserver", user="thparpai",  db="thparpai")
 
@@ -22,7 +22,7 @@ maire_data.next()
 
 # On créé une requête et on remplit la BD
 
-query = "INSERT INTO `Maire` (`code_insee`, `departement`, `commune`, `population`, `nom`, `prenom`, `civilite`, `date_de_naissance`, `code_professionnel`, `profession`) \
+query = "INSERT INTO `Maire_flat` (`code_insee`, `departement`, `commune`, `population`, `nom`, `prenom`, `civilite`, `date_de_naissance`, `code_professionnel`, `profession`) \
          VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
 for row in maire_data:
