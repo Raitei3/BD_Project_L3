@@ -1,7 +1,8 @@
 
 USE `antborde`;
 
-CREATE TABLE `Maire`(
+DROP TABLE IF EXISTS `Maire_flat`;
+CREATE TABLE `Maire_flat`(
   `code_insee` MEDIUMINT(6) UNSIGNED NOT NULL,
   `departement`varchar(50) NOT NULL,
   `commune` varchar(50) NOT NULL,
