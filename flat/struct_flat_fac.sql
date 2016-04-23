@@ -3,7 +3,7 @@ USE `antborde`;
 
 DROP TABLE IF EXISTS `Maire_flat`;
 CREATE TABLE `Maire_flat`(
-  `code_insee` varchar(20) UNSIGNED NOT NULL PRIMARY KEY,
+  `code_insee` varchar(20)  NOT NULL PRIMARY KEY,
   `departement`varchar(50) NOT NULL,
   `commune` varchar(50) NOT NULL,
   `population` MEDIUMINT(7) UNSIGNED NOT NULL,
