@@ -55,6 +55,7 @@ for data in local:
     cursor.execute(query_local, (data[0],data[1],data[2],data[3]))
 
 #TABLE elue
+db.commit()
 
 print("import elue")
 
@@ -64,8 +65,7 @@ elue = cursor_flat.fetchall()
 query_elue = "INSERT INTO `elue` (`nom`, `prenom`, `civilite`,`date_de_naissance`, `code_professionnel`, `id_localite`) VALUES (%s,%s,%s,%s,%s, (SELECT `id` FROM `localite` WHERE  `code_insee` = %s AND `commune` = %s))"
 
 for data in elue:
-    #print(data)
-    cursor.execute(query_elue, (data[0],data[1],data[2],data[3],data[4],data[5]))
+    cursor.execute(query_elue, (data[0],data[1],data[2],data[3],data[4],data[5],data[6]))
 
 
 

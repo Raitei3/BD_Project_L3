@@ -12,7 +12,7 @@ db = MySQLdb.connect(host="localhost", user="root", passwd="shadow", db="Maire_f
 cursor = db.cursor()
 
 # Ouverture des fichiers csv et création d'un reader
-maire_data     = csv.reader(open("../data_maire.csv")).decode('iso-8601')
+maire_data     = csv.reader(open("../data_maire.csv"))
 
 # On passe la première ligne qui contient le nom des attributs
 maire_data.next()
@@ -22,8 +22,9 @@ maire_data.next()
 query = "INSERT INTO `Maire` (`code_insee`, `departement`, `commune`, `population`, `nom`, `prenom`, `civilite`, `date_de_naissance`, `code_professionnel`, `profession`) \
          VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
-for row in maire_data:
-    data = (row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9])
+for data in maire_data:
+    print (data[9])
+    data = (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9])
 
     cursor.execute(query, data)
 
