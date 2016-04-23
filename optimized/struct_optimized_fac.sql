@@ -1,18 +1,20 @@
-DROP DATABASE IF EXISTS `Maire_Optimized`;
-CREATE DATABASE `Maire_Optimized`;
 
-USE `Maire_Optimized`
 
+USE `antborde`
+
+DROP TABLE IF EXISTS `dept`
 CREATE TABLE `dept`(
   `id` SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `departement`varchar(50) NOT NULL
 )ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS `prfs`
 CREATE TABLE `prfs`(
   `code_professionnel` SMALLINT NOT NULL PRIMARY KEY,
   `profession`varchar(120) NOT NULL
 )ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS `comm`
 CREATE TABLE `comm`(
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `commune` varchar(80) NOT NULL,
@@ -21,6 +23,7 @@ CREATE TABLE `comm`(
   CONSTRAINT `cle_dept` FOREIGN KEY (`id_departement`) REFERENCES `dept`(`id`)
 )ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS `elus`
 CREATE TABLE `elue`(
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nom` varchar(50) NOT NULL,
@@ -31,6 +34,7 @@ CREATE TABLE `elue`(
   CONSTRAINT `cle_prfs` FOREIGN KEY (`code_professionnel`) REFERENCES `prfs`(`code_professionnel`)
 )ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS `localite`
 CREATE TABLE `localite`(
   `code_insee` varchar(20) NOT NULL PRIMARY KEY,
   `id_commune` int NOT NULL,

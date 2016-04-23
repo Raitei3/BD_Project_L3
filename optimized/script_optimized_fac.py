@@ -6,9 +6,9 @@ import MySQLdb
 
 
 
-db = MySQLdb.connect(host="localhost", user="root", passwd="shadow", db="Maire_Optimized")
+db = MySQLdb.connect(host="dbserver", user="antborde", passwd="poneysql", db="antborde")
 
-db_flat = MySQLdb.connect(host="localhost", user="root", passwd="shadow", db="Maire_flat")
+db_flat = MySQLdb.connect(host="dbserver", user="antborde", passwd="poneysql", db="antborde")
 
 cursor = db.cursor()
 cursor_flat = db_flat.cursor()
@@ -22,7 +22,7 @@ maire_data.next()
 
 print("import dept")
 
-query_select_dept = "SELECT DISTINCT `departement` FROM `Maire`"
+query_select_dept = "SELECT DISTINCT `departement` FROM `Maire_flat`"
 cursor_flat.execute(query_select_dept)
 dept = cursor_flat.fetchall()
 query_dept = "INSERT INTO `dept` (`departement`) VALUES (%s)"
@@ -34,7 +34,7 @@ for data in dept:
 
 print("import prfs")
 
-query_select_cp = "SELECT DISTINCT `code_professionnel` , `profession` FROM `Maire`"
+query_select_cp = "SELECT DISTINCT `code_professionnel` , `profession` FROM `Maire_flat`"
 cursor_flat.execute(query_select_cp)
 cp = cursor_flat.fetchall()
 query_cp = "INSERT INTO `prfs` (`code_professionnel` , `profession`) VALUES (%s, %s)"
@@ -47,7 +47,7 @@ for data in cp:
 
 print("import commune")
 
-query_select_comm = "SELECT DISTINCT `commune`, `departement`, `population` FROM `Maire`"
+query_select_comm = "SELECT DISTINCT `commune`, `departement`, `population` FROM `Maire_flat`"
 cursor_flat.execute(query_select_comm)
 comm = cursor_flat.fetchall()
 query_comm = "INSERT INTO `comm` (`commune`, `id_departement`, `population`) VALUES (%s, (SELECT `id` FROM `dept` WHERE `departement` = %s),%s)"
@@ -60,7 +60,7 @@ for data in comm:
 
 print("import elue")
 
-query_select_elue = "SELECT DISTINCT `nom`, `prenom`, `civilite`,`date_de_naissance`, `code_professionnel` FROM `Maire`"
+query_select_elue = "SELECT DISTINCT `nom`, `prenom`, `civilite`,`date_de_naissance`, `code_professionnel` FROM `Maire_flat`"
 cursor_flat.execute(query_select_elue)
 elue = cursor_flat.fetchall()
 query_elue = "INSERT INTO `elue` (`nom`, `prenom`, `civilite`,`date_de_naissance`, `code_professionnel`) VALUES (%s,%s,%s,%s,%s)"
@@ -74,7 +74,7 @@ for data in elue:
 
 print("import localite")
 
-query_select_local = "SELECT DISTINCT `code_insee`, `commune`, `departement`,`nom`,`prenom`,`date_de_naissance` FROM `Maire`"
+query_select_local = "SELECT DISTINCT `code_insee`, `commune`, `departement`,`nom`,`prenom`,`date_de_naissance` FROM `Maire_flat`"
 cursor_flat.execute(query_select_local)
 local = cursor_flat.fetchall()
 query_local = "INSERT INTO `localite` (`code_insee`, `id_commune`, `id_maire`) VALUES (%s,(SELECT `id` FROM `comm` WHERE `commune` = %s AND `id_departement` = (SELECT `id` FROM `dept` WHERE `departement` = %s)),(SELECT `id` FROM `elue` WHERE `nom` = %s AND `prenom` = %s AND `date_de_naissance` = %s))"
