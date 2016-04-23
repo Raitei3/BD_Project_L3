@@ -9,12 +9,10 @@ import MySQLdb
 
 db = MySQLdb.connect(host="localhost", user="root", passwd="shadow", db="Maire_flat")
 
-# Connexion à la BD au cremi (à supprimer, utilisé pour les tests)
-#db = MySQLdb.connect(host="dbserver", user="thparpai", passwd="beyblade33", db="thparpai")
 cursor = db.cursor()
 
 # Ouverture des fichiers csv et création d'un reader
-maire_data     = csv.reader(open("../data_maire.csv"))
+maire_data     = csv.reader(open("../data_maire.csv")).decode('iso-8601')
 
 # On passe la première ligne qui contient le nom des attributs
 maire_data.next()

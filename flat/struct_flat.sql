@@ -1,13 +1,13 @@
 
 
-#DROP DATABASE IF EXISTS `Maire_flat`;
+DROP DATABASE IF EXISTS `Maire_flat`;
 CREATE DATABASE `Maire_flat`;
 
 USE `Maire_flat`;
-DROP TABLE IF EXISTS `Maire`
+DROP TABLE IF EXISTS `Maire`;
 CREATE TABLE `Maire`(
-  `code_insee` MEDIUMINT(6) UNSIGNED NOT NULL,
-  `departement`varchar(50) NOT NULL,
+  `code_insee` MEDIUMINT(7) UNSIGNED NOT NULL,
+  `departement` varchar(50) NOT NULL,
   `commune` varchar(50) NOT NULL,
   `population` MEDIUMINT(7) UNSIGNED NOT NULL,
   `nom` TINYTEXT NOT NULL,

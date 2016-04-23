@@ -5,11 +5,7 @@ import csv
 import MySQLdb
 
 # Connexion à la BD
-
 db = MySQLdb.connect(host="dbserver", user="antborde", passwd="poneysql", db="antborde")
-
-#pour le cremi
-#db = MySQLdb.connect(host="dbserver", user="thparpai",  db="thparpai")
 
 
 cursor = db.cursor()
