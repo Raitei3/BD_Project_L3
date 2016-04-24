@@ -13,9 +13,6 @@ db_flat = MySQLdb.connect(host="dbserver", user="antborde", passwd="poneysql", d
 cursor = db.cursor()
 cursor_flat = db_flat.cursor()
 
-maire_data     = csv.reader(open("../data_maire.csv"))
-
-maire_data.next()
 
 #TABLE dept
 

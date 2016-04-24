@@ -13,10 +13,6 @@ db_flat = MySQLdb.connect(host="localhost", user="root", passwd="shadow", db="Ma
 cursor = db.cursor()
 cursor_flat = db_flat.cursor()
 
-maire_data     = csv.reader(open("../data_maire.csv"))
-
-maire_data.next()
-
 #TABLE dept
 
 
