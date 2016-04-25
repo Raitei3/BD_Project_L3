@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS `Maire_Optimized`;
 CREATE DATABASE `Maire_Optimized`;
 
-USE `Maire_Optimized`
+USE `Maire_Optimized`;
 
 CREATE TABLE `dept`(
   `id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
