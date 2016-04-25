@@ -1,20 +1,23 @@
 
 
 USE `antborde`;
-
+DROP TABLE IF EXISTS `localite`;
+DROP TABLE IF EXISTS `elue`;
+DROP TABLE IF EXISTS `comm`;
+DROP TABLE IF EXISTS `prfs`;
 DROP TABLE IF EXISTS `dept`;
 CREATE TABLE `dept`(
   `id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `departement`varchar(50) NOT NULL
 )ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `prfs`;
+
 CREATE TABLE `prfs`(
   `code_professionnel` TINYINT(3) UNSIGNED NOT NULL PRIMARY KEY,
   `profession`varchar(80) NOT NULL
 )ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `comm`;
+
 CREATE TABLE `comm`(
   `id` SMALLINT(6) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `commune` varchar(60) NOT NULL,
@@ -23,7 +26,7 @@ CREATE TABLE `comm`(
   CONSTRAINT `cle_dept` FOREIGN KEY (`id_departement`) REFERENCES `dept`(`id`)
 )ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `elue`;
+
 CREATE TABLE `elue`(
   `id` SMALLINT(6) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nom` TINYTEXT NOT NULL,
@@ -34,7 +37,7 @@ CREATE TABLE `elue`(
   CONSTRAINT `cle_prfs` FOREIGN KEY (`code_professionnel`) REFERENCES `prfs`(`code_professionnel`)
 )ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `localite`;
+
 CREATE TABLE `localite`(
   `code_insee` varchar(7) NOT NULL PRIMARY KEY,
   `id_commune` SMALLINT(6) UNSIGNED NOT NULL,
